@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+</head>
+<body>
+    <h2>Validação de Formulário</h2>
+
+    <form id="meuFormulario">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required>
+        <br><br>
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required>
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Obter valores dos campos
+            var campoA = parseInt(document.getElementById('campoA').value);
+            var campoB = parseInt(document.getElementById('campoB').value);
+
+            // Verificar a validade do formulário (B deve ser maior que A)
+            if (campoB > campoA) {
+                // Formulário válido
+                document.getElementById('resultado').textContent = "Formulário válido! B é maior que A.";
+                document.getElementById('resultado').style.color = "green";
+            } else {
+                // Formulário inválido
+                document.getElementById('resultado').textContent = "Formulário inválido! B deve ser maior que A.";
+                document.getElementById('resultado').style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
